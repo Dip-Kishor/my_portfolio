@@ -134,9 +134,9 @@ const Navbar = () => {
                         <Logo className='w-14 h-14 font-bold' />
                     </div>
                     <div className="justify-self-center">
-                        <ul className='flex gap-8 items-center'>
+                        <ul className='flex gap-8 flex-wrap items-center'>
                             {navLinks.map((navLink, index) => (
-                                <li key={index} className='text-[15px] font-bold'>
+                                <li key={index} className='text-[15px] whitespace-nowrap font-bold'>
                                     <Link
                                         href={navLink.href}
                                         className={`

@@ -68,7 +68,7 @@ const Footer = () => {
                     </a>
                 </div>
                 <div className="flex items-center justify-self-center md:justify-start gap-4 my-6">
-                    <div className="flex items-center gap-2">
+                    {/* <div className="flex items-center gap-2">
                         <a
                             href="mailto:dipkishor9910@gmail.com"
                             className="w-8 h-8 flex items-center justify-center rounded-full border border-muted-text text-muted-text hover:bg-[#FF8132] hover:border-[#FF8132] hover:text-white transition duration-300"
@@ -76,8 +76,30 @@ const Footer = () => {
                             <FaEnvelope size={14} />
                         </a>
                         <span>dipkishor9910@gmail.com</span>
-                    </div>
+                    </div> */}
+                    <div className="flex items-center gap-2">
 
+                        {/* 1. MOBILE ONLY: Uses mailto (Standard behavior) */}
+                        <a
+                            href="mailto:dipkishor9910@gmail.com"
+                            className="md:hidden w-8 h-8 flex items-center justify-center rounded-full border border-muted-text text-muted-text hover:bg-[#FF8132] hover:border-[#FF8132] hover:text-white transition duration-300"
+                        >
+                            <FaEnvelope size={14} />
+                        </a>
+
+                        {/* 2. DESKTOP ONLY: Opens Gmail New Tab */}
+                        <a
+                            href="https://mail.google.com/mail/?view=cm&fs=1&to=dipkishor9910@gmail.com"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hidden md:flex w-8 h-8 items-center justify-center rounded-full border border-muted-text text-muted-text hover:bg-[#FF8132] hover:border-[#FF8132] hover:text-white transition duration-300"
+                        >
+                            <FaEnvelope size={14} />
+                        </a>
+
+                        {/* The text address */}
+                        <span>dipkishor9910@gmail.com</span>
+                    </div>
                     <div className="flex items-center gap-2">
                         <a
                             href="tel:9761781000"

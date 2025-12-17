@@ -12,7 +12,7 @@ const HeroBanner = () => {
                     <h3 className="text-2xl sm:text-3xl md:text-5xl my-4 text-button font-bold whitespace-nowrap md:whitespace-normal">Software Developer</h3>
                     <div className="flex items-center justify-center md:justify-start gap-4 my-6">
                         <a
-                            href="https://instagram.com/yourusername"
+                            href="https://instagram.com/dipkishor_regmi"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="w-10 h-10 flex items-center justify-center rounded-full border border-muted-text text-muted-text hover:bg-button hover:text-white transition"
@@ -21,7 +21,7 @@ const HeroBanner = () => {
                         </a>
 
                         <a
-                            href="https://github.com/yourusername"
+                            href="https://github.com/Dip-Kishor"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="w-10 h-10 flex items-center justify-center rounded-full border border-muted-text text-muted-text hover:bg-button hover:text-white transition"
@@ -29,7 +29,7 @@ const HeroBanner = () => {
                             <FaGithub size={18} />
                         </a>
                         <a
-                            href="https://github.com/yourusername"
+                            href="https://www.linkedin.com/in/dip-kishor-regmi-9b7a6631b/"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="w-10 h-10 flex items-center justify-center rounded-full border border-muted-text text-muted-text hover:bg-button hover:text-white transition"

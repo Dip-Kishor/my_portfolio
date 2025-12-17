@@ -19,7 +19,7 @@ const Footer = () => {
 
             <div className='bg-cards mt-20 py-2'>
                 <div className="justify-self-center my-5">
-                    <Logo className='w-16 h-16'/>
+                    <Logo className='w-16 h-16' />
                 </div>
                 <div className="justify-self-center">
                     <ul className='flex gap-8 flex-wrap items-center justify-center'>
@@ -42,7 +42,7 @@ const Footer = () => {
                 </div>
                 <div className="flex items-center justify-self-center md:justify-start gap-4 my-6">
                     <a
-                        href="https://instagram.com/yourusername"
+                        href="https://instagram.com/dipkishor_regmi"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="w-10 h-10 flex items-center justify-center rounded-full border border-muted-text text-muted-text hover:bg-button hover:text-white transition"
@@ -51,7 +51,7 @@ const Footer = () => {
                     </a>
 
                     <a
-                        href="https://github.com/yourusername"
+                        href="https://github.com/Dip-Kishor"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="w-10 h-10 flex items-center justify-center rounded-full border border-muted-text text-muted-text hover:bg-button hover:text-white transition"
@@ -59,7 +59,7 @@ const Footer = () => {
                         <FaGithub size={18} />
                     </a>
                     <a
-                        href="https://github.com/yourusername"
+                        href="https://www.linkedin.com/in/dip-kishor-regmi-9b7a6631b"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="w-10 h-10 flex items-center justify-center rounded-full border border-muted-text text-muted-text hover:bg-button hover:text-white transition"

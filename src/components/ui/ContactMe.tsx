@@ -46,7 +46,7 @@ const Contact = () => {
                                 },
                                 {
                                     icon: <Mail className="text-orange-500" />,
-                                    label: "Email Me",
+                                    label: "Email",
                                     value: "dipkishor9910@gmail.com",
                                     className: "flex md:hidden",
                                     href: "mailto:dipkishor9910@gmail.com"

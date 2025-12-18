@@ -1,0 +1,143 @@
+'use client'
+import React, { useState } from 'react';
+import { X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
+
+interface Project {
+    id: number;
+    name: string;
+    category: string;
+    images: string[];
+}
+
+const ProjectCollage = ({ images, index }: { images: string[], index: number }) => {
+    const isEven = index % 2 === 0;
+
+    // 1. EVEN STYLE: "Layered Stack"
+    if (isEven) {
+        return (
+            <div className="relative w-full h-full p-6 flex items-center justify-center">
+                <div className="absolute top-12 right-4 w-[65%] h-[70%] rotate-3 overflow-hidden rounded-xl border-4 border-[#1a1a1a] shadow-2xl transition-all duration-500 group-hover:rotate-6 group-hover:translate-x-4">
+                    <img src={images[1] || images[0]} className="w-full h-full object-cover opacity-60" alt="bg" />
+                </div>
+                <div className="relative z-10 w-[70%] h-[85%] -rotate-2 overflow-hidden rounded-2xl border-4 border-[#222] shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all duration-500 group-hover:rotate-0 group-hover:-translate-x-2">
+                    <img src={images[0]} className="w-full h-full object-cover" alt="front" />
+                </div>
+            </div>
+        );
+    }
+
+    // 2. ODD STYLE: "Grid Mosaic" 
+    return (
+        <div className="grid grid-cols-5 grid-rows-2 gap-2 h-full p-4 relative">
+            <div className="col-span-3 row-span-2 overflow-hidden rounded-xl">
+                <img src={images[0]} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="m1" />
+            </div>
+            <div className="col-span-2 row-span-1 overflow-hidden rounded-xl">
+                <img src={images[1] || images[0]} className="w-full h-full object-cover group-hover:scale-125 transition-transform duration-700" alt="m2" />
+            </div>
+            <div className="col-span-2 row-span-1 overflow-hidden rounded-xl">
+                <img src={images[2] || images[0]} className="w-full h-full object-cover group-hover:scale-125 transition-transform duration-700" alt="m3" />
+            </div>
+        </div>
+    );
+};
+
+const Projects = () => {
+    const [activeTab, setActiveTab] = useState<string>('All');
+    const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+    const [currentImgIndex, setCurrentImgIndex] = useState<number>(0);
+
+    const categories = ['All', 'Website Design', 'App Mobile Design', 'App Desktop', 'Braiding'];
+
+    const projectsData: Project[] = [
+        { id: 1, name: 'Zalwa Creative', category: 'Website Design', images: ['/Images/WebDesign.jpg', '/Images/LaptopMobile.jpg', '/Images/Backend.jpg', '/Images/Backend.jpg'] },
+        { id: 2, name: 'Minimal Portfolio', category: 'App Mobile Design', images: ['/Images/Ecommerce.png', '/Images/ApiIntegrations.jpg', '/Images/WebDesign.jpg', '/Images/Backend.jpg'] },
+        { id: 3, name: 'Undercover Design', category: 'App Desktop', images: ['/Images/Backend.jpg', '/Images/Ecommerce.png', '/Images/WebDesign.jpg'] },
+        { id: 4, name: 'Future Concept', category: 'Website Design', images: ['/Images/ApiIntegrations.jpg', '/Images/Backend.jpg', '/Images/WebDesign.jpg'] }
+    ];
+
+    const filteredProjects = activeTab === 'All' ? projectsData : projectsData.filter(p => p.category === activeTab);
+
+    return (
+        <div className="mt-15 md:mt-20 px-4 md:px-20 mb-20 relative bg-[#111]">
+             <div className="relative mb-20">
+                <h2 className="absolute -top-10 left-1/2 -translate-x-1/2 text-[8rem] md:text-[12rem] font-black text-white/[0.02] uppercase select-none whitespace-nowrap">
+                    Work
+                </h2>
+                <div className="relative z-10 text-center">
+                    <p className="text-orange-500 font-black tracking-[0.3em] text-xs mb-2 uppercase">My Works</p>
+                    <h3 className="text-white text-5xl md:text-6xl font-extrabold tracking-tight">Projects</h3>
+                </div>
+            </div>
+
+            {/* Filter Tabs */}
+            <div className="flex flex-wrap justify-center gap-4 mb-16">
+                {categories.map((tab) => (
+                    <button
+                        key={tab}
+                        onClick={() => setActiveTab(tab)}
+                        className={`px-8 py-3 rounded-full text-sm font-bold transition-all duration-300 ${activeTab === tab ? 'bg-orange-600 text-white shadow-[0_0_20px_rgba(234,88,12,0.4)] scale-105' : 'bg-[#1e1e1e] text-gray-500 hover:text-white'}`}
+                    >
+                        {tab}
+                    </button>
+                ))}
+            </div>
+
+            {/* Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                {filteredProjects.map((project, i) => (
+                    <div key={project.id} onClick={() => { setSelectedProject(project); setCurrentImgIndex(0); }} className="group cursor-pointer flex flex-col">
+
+                        <div className="relative h-[450px] w-full bg-[#161616] rounded-[2.5rem] overflow-hidden border border-white/5 transition-all duration-500 group-hover:border-orange-600/50 group-hover:bg-[#1a1a1a]">
+
+                            <ProjectCollage images={project.images} index={i} />
+
+                            {/* HOVER OVERLAY - Centered Maximize Button */}
+                            <div className="absolute inset-0 z-20 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center backdrop-blur-[3px]">
+                                <div className="bg-white text-black p-5 rounded-full shadow-2xl scale-0 group-hover:scale-100 transition-transform duration-500 hover:bg-orange-600 hover:text-white">
+                                    <Maximize2 size={28} />
+                                </div>
+                            </div>
+
+                            {/* PHOTO COUNT BADGE */}
+                            <div className="absolute bottom-6 right-8 z-30 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                <span className="bg-[#111]/80 backdrop-blur-md text-white text-[10px] font-bold px-3 py-1 rounded-full border border-white/10">
+                                    {project.images.length} PHOTOS
+                                </span>
+                            </div>
+                        </div>
+
+                        {/* Text Content */}
+                        <div className="mt-6 px-4 flex justify-between items-end">
+                            <div>
+                                <p className="text-orange-500 text-[10px] font-black uppercase tracking-[0.2em] mb-1">{project.category}</p>
+                                <h4 className="text-white text-2xl font-bold group-hover:translate-x-1 transition-transform">{project.name}</h4>
+                            </div>
+                            <span className="text-white/20 text-xs font-mono">0{i + 1}</span>
+                        </div>
+                    </div>
+                ))}
+            </div>
+
+            {/* LIGHTBOX MODAL */}
+            {selectedProject && (
+                <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/98 backdrop-blur-xl p-4 animate-in fade-in duration-300">
+                    <button onClick={() => setSelectedProject(null)} className="absolute top-8 right-8 text-white/50 hover:text-white transition-colors z-[110]">
+                        <X size={48} strokeWidth={1} />
+                    </button>
+                    <div className="relative w-full max-w-6xl h-[85vh] flex items-center justify-center group/modal">
+                        {selectedProject.images.length > 1 && (
+                            <>
+                                <button onClick={(e) => { e.stopPropagation(); setCurrentImgIndex(p => (p - 1 + selectedProject.images.length) % selectedProject.images.length) }} className="absolute left-4 z-[110] bg-white/5 hover:bg-orange-600 p-5 rounded-full text-white transition-all opacity-0 group-hover/modal:opacity-100"><ChevronLeft size={32} /></button>
+                                <button onClick={(e) => { e.stopPropagation(); setCurrentImgIndex(p => (p + 1) % selectedProject.images.length) }} className="absolute right-4 z-[110] bg-white/5 hover:bg-orange-600 p-5 rounded-full text-white transition-all opacity-0 group-hover/modal:opacity-100"><ChevronRight size={32} /></button>
+                            </>
+                        )}
+                        <img src={selectedProject.images[currentImgIndex]} className="max-w-full max-h-full object-contain rounded-lg shadow-2xl" alt="view" />
+                    </div>
+                </div>
+            )}
+        </div>
+    );
+};
+
+export default Projects;

@@ -1,5 +1,6 @@
 "use client";
 import { useMemo } from "react";
+import { Code2, Briefcase, Terminal, Cpu, Rocket, CheckCircle2 } from "lucide-react";
 
 const AboutMe = () => {
     const startDate = useMemo(() => new Date("2022-03-05"), []);
@@ -16,58 +17,117 @@ const AboutMe = () => {
         return { years, months };
     }, [startDate]);
 
+    const skills = ["C#", "ASP.NET Core", "LINQ", "React.js", "Next.js", "Tailwind CSS", "Bootstrap", "SQL Server", "PostgreSQL", "Entity Framework", "Database Design", "Stored Procedures", "Indexing & Query Optimization", "REST APIs", "JWT", "Third-party API Integration", "Git", "Docker", "Docker Compose", "CI/CD Pipelines", "GitHub Actions", "Clean Architecture", "Agile", "Code Review", "Performance Optimization"];
+
     return (
-        <>
-            <div className="text-center text-5xl mb-20 -mt-10 md:mt-0 font-bold">About Me</div>
-            <div className="mb-70 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 items-center text-center md:text-left lg:text-left gap-8">
-                <div className="flex justify-center  mt-10 md:mt-0 relative">
-                    <div className="w-60 h-60 md:w-105 md:h-105 rounded-full bg-cards relative overflow-visible">
+        <section className="mt-15 md:mt-0  px-4 md:px-20 bg-[#111] overflow-hidden">
+            {/* Background Header Text (Watermark effect) */}
+            <div className="relative mb-20">
+                <h2 className="absolute -top-10 left-1/2 -translate-x-1/2 text-[8rem] md:text-[12rem] font-black text-white/[0.02] uppercase select-none whitespace-nowrap">
+                    Experience
+                </h2>
+                <div className="relative z-10 text-center">
+                    <p className="text-orange-500 font-black tracking-[0.3em] text-xs mb-2 uppercase">My Journey</p>
+                    <h3 className="text-white text-5xl md:text-6xl font-extrabold tracking-tight">About Me</h3>
+                </div>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+
+                {/* 1. LEFT SIDE: THE IMAGE BOX (Different from Hero) */}
+                <div className="lg:col-span-5 relative group">
+                    <div className="relative aspect-[4/5] w-full rounded-[3rem] overflow-hidden border border-white/10 bg-[#161616]">
                         <img
                             src="/Images/MyImgNew.png"
                             alt="Dip Kishor Regmi"
-                            className="w-72 h-108 md:w-[30rem] md:h-[47rem] object-cover rounded-full absolute -top-[80%] md:-top-[79%] left-1/2 -translate-x-1/2"
+                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                         />
+                        {/* Overlay Gradient */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#111] via-transparent to-transparent opacity-60" />
+
+                        {/* Floating Experience Badge */}
+                        <div className="absolute bottom-8 left-8 right-8 bg-black/40 backdrop-blur-xl border border-white/10 p-6 rounded-[2rem]">
+                            <p className="text-orange-500 font-black text-xs tracking-widest uppercase mb-1">Total Expertise</p>
+                            <h4 className="text-white text-2xl font-bold">
+                                {years} Years & {months} Months
+                            </h4>
+                        </div>
                     </div>
+                    {/* Decorative Elements */}
+                    <div className="absolute -top-6 -right-6 w-24 h-24 bg-orange-600/20 blur-3xl rounded-full" />
                 </div>
-                <div className="mx-10 text-justify">
-                    <p className="text-3xl text-text mb-2 font-semibold ">
-                        I have {years} {years === 1 ? "year" : "years"} and {months}{" "}
-                        {months === 1 ? "month" : "months"} of professional experience as
-                        <span className="font-bold"> Software Developer</span>.  <br />
-                    </p>
-                    Over the years, I have contributed to a wide range of projects, including
-                    <span className="italic"> Ehajiri (Attendance, Leave, HR, Payroll Management System)</span>,
-                    <span className="italic"> Hotel Management System</span>, and an
-                    <span className="italic"> Advanced Distribution Management System</span>.
-                    <br />
-                    <br />
-                    Currently, I am working as a <span className="font-bold">.NET Developer</span> at
-                    <span className="font-bold"> Riddhasoft Pvt. Ltd.</span>, where I have been employed since
-                    <span className="font-bold"> Dec 2022</span>.
-                    <hr />
-                    <div className="mt-4">
-                        <span className="font-bold">Technical Stack:</span>
-                        <ul className="list-disc list-inside">
-                            <li>
-                                Proficient in
-                                <span className="italic font-semibold"> C#, ASP.NET Core, React.js, Next.js, SQL Server, Entity Framework, REST APIs, JWT, and Git</span>.
-                            </li>
-                            <li>
-                                Experience with agile methodologies, unit testing, and CI/CD pipelines.
-                            </li>
-                            <li>
-                                Have working knowledge of <span className="italic font-semibold">Docker, Kubernetes, and Microsoft Azure</span>,
-                                allowing me to contribute to scalable and cloud-ready applications.
-                            </li>
-                        </ul>
-                        <p className="mb-4 mt-4">
-                            Beyond coding, I am passionate about DevOps practices. I have successfully containerized .NET applications using <span className="font-semibold">Docker</span> and deployed personal projects to cloud environments, streamlining the deployment process and ensuring application consistency.
+
+                {/* 2. RIGHT SIDE: THE BENTO CONTENT */}
+                <div className="lg:col-span-7 space-y-8">
+
+                    {/* Intro Card */}
+                    <div className="bg-[#161616] border border-white/5 p-8 md:p-10 rounded-[2.5rem] relative overflow-hidden group">
+                        <Terminal className="absolute -right-4 -top-4 text-white/[0.03] w-32 h-32 rotate-12" />
+                        <h4 className="text-white text-3xl font-bold mb-6 flex items-center gap-3">
+                            <span className="w-8 h-[2px] bg-orange-600"></span>
+                            Professional Narrative
+                        </h4>
+                        <p className="text-gray-400 text-lg leading-relaxed text-justify">
+                            As a <span className="text-white font-bold">Software Developer</span>, I specialize in bridging the gap between robust backend architecture and high-performance frontend interfaces.
+                            Currently driving innovation at <span className="text-orange-500 font-bold">Riddhasoft Pvt. Ltd.</span> as a Software Developer since early 2022.
                         </p>
                     </div>
+
+                    {/* Skill Pills Grid */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {/* Tech Stack Box */}
+                        <div className="bg-[#1a1a1a] p-8 rounded-[2.5rem] border border-white/5">
+                            <div className="flex items-center gap-3 mb-6">
+                                <Cpu className="text-orange-500" size={24} />
+                                <h5 className="text-white font-bold uppercase tracking-widest text-sm">Technical Stack</h5>
+                            </div>
+                            <div className="flex flex-wrap gap-2">
+                                {skills.map((skill) => (
+                                    <span key={skill} className="bg-white/5 border border-white/5 text-gray-400 px-3 py-1.5 rounded-full text-[11px] font-bold hover:border-orange-600 hover:text-white transition-colors cursor-default">
+                                        {skill}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* DevOps Box */}
+                        <div className="bg-orange-600 p-8 rounded-[2.5rem] text-white relative overflow-hidden group">
+                            <Rocket className="absolute -right-4 -bottom-4 opacity-20 w-24 h-24 -rotate-12 transition-transform group-hover:translate-y-[-10px]" />
+                            <div className="flex items-center gap-3 mb-4">
+                                <Code2 size={24} />
+                                <h5 className="font-bold uppercase tracking-widest text-sm">Cloud & DevOps</h5>
+                            </div>
+                            <p className="text-orange-100 text-xs leading-relaxed font-medium">
+                                Passionate about scalability. Proficient in containerizing apps with <strong>Docker</strong> and orchestrating with <strong>Kubernetes</strong> on <strong>Azure</strong>.
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* Projects Checklist Card */}
+                    <div className="bg-[#161616] border border-white/5 p-8 rounded-[2.5rem]">
+                        <div className="flex items-center gap-3 mb-6 text-gray-500 uppercase text-[10px] font-black tracking-[0.2em]">
+                            <Briefcase size={16} /> Major Contributions
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            {[
+                                "Ehajiri (Attendance, Leave, HR, Payroll etc. MS)",
+                                "Hotel Management System",
+                                "Advanced Distribution MS",
+                                "Enterprise Resource Planning (ERP)",
+                                "Scalable Cloud Deployments"
+                            ].map((item) => (
+                                <div key={item} className="flex items-center gap-3 text-gray-300">
+                                    <CheckCircle2 size={18} className="text-orange-500" />
+                                    <span className="text-sm font-medium">{item}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
                 </div>
             </div>
-        </>
-    )
-}
+        </section>
+    );
+};
 
-export default AboutMe
+export default AboutMe;

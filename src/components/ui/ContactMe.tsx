@@ -68,7 +68,7 @@ const Contact = () => {
                                     key={i}
                                     href={item.href}
                                     target={item.label === "Email Me" ? "_blank" : "_self"}
-                                    className="group bg-[#161616] border border-white/5 p-6 rounded-[2rem] flex items-center gap-6 transition-all hover:bg-[#1a1a1a] hover:border-orange-600/30 shadow-xl"
+                                    className={`group bg-[#161616] border border-white/5 p-6 rounded-[2rem] flex items-center gap-6 transition-all hover:bg-[#1a1a1a] hover:border-orange-600/30 shadow-xl ${item.className}`}
                                 >
                                     <div className="w-14 h-14 rounded-2xl bg-[#111] flex items-center justify-center border border-white/5 group-hover:bg-orange-600 group-hover:text-white transition-all duration-500">
                                         {item.icon}

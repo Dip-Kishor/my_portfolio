@@ -1,29 +1,20 @@
 @import "tailwindcss";
 
-:root {
+/* :root {
   --muted-black: #121212;
-  --bg: #ffffff; /* light background */
+  --bg: #ffffff; 
   --primary: #f9f9f9;
   --secondary: #e5e5e5;
   --button: #fd6f00;
   --dark-orange: #8f440a;
-  --text: #121212; /* dark text */
+  --text: #121212; 
   --muted-text: #a4a2a2;
   --secondary-text: #a0a0a0;
   --accent: #18c048;
   --cards: rgba(0, 0, 0, 0.15);
-}
-
-body {
-  background-color: var(--bg);
-  color: var(--text);
-  transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-    color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Dark Theme */
-html.dark {
-  color-scheme: dark; /* Updates scrollbars to dark mode */
+} */
+:root {
+  color-scheme: dark;
   --muted-black: #060606;
   --bg: #121212;
   --primary: #1a1a1a;
@@ -36,6 +27,28 @@ html.dark {
   --accent: #18c048;
   --cards: rgba(255, 255, 255, 0.1);
 }
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dark Theme */
+/* html.dark {
+  color-scheme: dark; 
+  --muted-black: #060606;
+  --bg: #121212;
+  --primary: #1a1a1a;
+  --secondary: #1e1e1e;
+  --button: #fd6f00;
+  --dark-orange: #8f440a;
+  --text: #dddddd;
+  --muted-text: #aba49f;
+  --secondary-text: #727272;
+  --accent: #18c048;
+  --cards: rgba(255, 255, 255, 0.1);
+} */
 @theme inline {
   --color-background: var(--bg);
   --color-foreground: var(--foreground);

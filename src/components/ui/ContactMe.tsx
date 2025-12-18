@@ -31,33 +31,41 @@ const Contact = () => {
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-                    
+
                     {/* 1. LEFT SIDE: Contact Dashboard */}
                     <div className="lg:col-span-5 space-y-6">
                         {/* Info Tiles */}
                         <div className="grid grid-cols-1 gap-4">
                             {[
-                                { 
-                                    icon: <Mail className="text-orange-500" />, 
-                                    label: "Email Me", 
+                                {
+                                    icon: <Mail className="text-orange-500" />,
+                                    label: "Email Me",
                                     value: "dipkishor9910@gmail.com",
+                                    className: "hidden md:flex",
                                     href: "https://mail.google.com/mail/?view=cm&fs=1&to=dipkishor9910@gmail.com"
                                 },
-                                { 
-                                    icon: <Phone className="text-orange-500" />, 
-                                    label: "Call Me", 
+                                {
+                                    icon: <Mail className="text-orange-500" />,
+                                    label: "Email Me",
+                                    value: "dipkishor9910@gmail.com",
+                                    className: "flex md:hidden",
+                                    href: "mailto:dipkishor9910@gmail.com"
+                                },
+                                {
+                                    icon: <Phone className="text-orange-500" />,
+                                    label: "Call Me",
                                     value: "+977 9761781000",
                                     href: "tel:9761781000"
                                 },
-                                { 
-                                    icon: <MapPin className="text-orange-500" />, 
-                                    label: "Location", 
+                                {
+                                    icon: <MapPin className="text-orange-500" />,
+                                    label: "Location",
                                     value: "Kathmandu, Nepal",
                                     href: "#"
                                 }
                             ].map((item, i) => (
-                                <a 
-                                    key={i} 
+                                <a
+                                    key={i}
                                     href={item.href}
                                     target={item.label === "Email Me" ? "_blank" : "_self"}
                                     className="group bg-[#161616] border border-white/5 p-6 rounded-[2rem] flex items-center gap-6 transition-all hover:bg-[#1a1a1a] hover:border-orange-600/30 shadow-xl"
@@ -105,8 +113,8 @@ const Contact = () => {
                                     <label className="text-[10px] text-gray-500 font-black uppercase tracking-widest ml-4">Full Name</label>
                                     <div className="relative group">
                                         <User className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-600 group-focus-within:text-orange-500 transition-colors" size={18} />
-                                        <input 
-                                            type="text" name="name" placeholder="John Doe"
+                                        <input
+                                            type="text" name="name" placeholder="Example"
                                             className="w-full bg-[#111] border border-white/5 rounded-2xl py-4 pl-14 pr-6 text-white outline-none focus:border-orange-600/50 transition-all placeholder:text-white/10"
                                         />
                                     </div>
@@ -116,8 +124,8 @@ const Contact = () => {
                                     <label className="text-[10px] text-gray-500 font-black uppercase tracking-widest ml-4">Email Address</label>
                                     <div className="relative group">
                                         <Mail className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-600 group-focus-within:text-orange-500 transition-colors" size={18} />
-                                        <input 
-                                            type="email" name="email" placeholder="john@example.com"
+                                        <input
+                                            type="email" name="email" placeholder="mail@example.com"
                                             className="w-full bg-[#111] border border-white/5 rounded-2xl py-4 pl-14 pr-6 text-white outline-none focus:border-orange-600/50 transition-all placeholder:text-white/10"
                                         />
                                     </div>
@@ -127,7 +135,7 @@ const Contact = () => {
                             {/* Subject Input */}
                             <div className="space-y-2">
                                 <label className="text-[10px] text-gray-500 font-black uppercase tracking-widest ml-4">Subject</label>
-                                <input 
+                                <input
                                     type="text" name="subject" placeholder="Project Inquiry"
                                     className="w-full bg-[#111] border border-white/5 rounded-2xl py-4 px-6 text-white outline-none focus:border-orange-600/50 transition-all placeholder:text-white/10"
                                 />
@@ -138,7 +146,7 @@ const Contact = () => {
                                 <label className="text-[10px] text-gray-500 font-black uppercase tracking-widest ml-4">Your Message</label>
                                 <div className="relative group">
                                     <MessageSquare className="absolute left-5 top-6 text-gray-600 group-focus-within:text-orange-500 transition-colors" size={18} />
-                                    <textarea 
+                                    <textarea
                                         name="message" rows={5} placeholder="Tell me about your project..."
                                         className="w-full bg-[#111] border border-white/5 rounded-[2rem] py-5 pl-14 pr-6 text-white outline-none focus:border-orange-600/50 transition-all placeholder:text-white/10 resize-none"
                                     />
@@ -146,8 +154,8 @@ const Contact = () => {
                             </div>
 
                             {/* Submit Button */}
-                            <CustomButton 
-                                variant="primary" 
+                            <CustomButton
+                                variant="primary"
                                 className="w-full py-5 rounded-[2rem] bg-orange-600 hover:bg-orange-700 text-white font-black uppercase tracking-widest flex items-center justify-center gap-3 transition-all hover:scale-[1.02] shadow-xl shadow-orange-600/20"
                             >
                                 Send Message <Send size={18} />

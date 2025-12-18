@@ -29,8 +29,8 @@ const Footer = () => {
                     </h2>
                     <p className="text-gray-500 max-w-sm">Let’s transform your vision into a high-performance digital reality.</p>
                 </div>
-                <Link 
-                    href="/contact" 
+                <Link
+                    href="/contact"
                     className="group bg-white text-black px-8 py-4 rounded-full font-black flex items-center gap-3 hover:bg-orange-600 hover:text-white transition-all duration-500"
                 >
                     GET IN TOUCH <ArrowUpRight className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
@@ -86,10 +86,10 @@ const Footer = () => {
                     <h4 className="text-white font-bold uppercase tracking-widest text-xs mb-8">Contact Info</h4>
                     <div className="space-y-6">
                         {/* Desktop Gmail Tab behavior from your original code */}
-                        <a 
+                        <a
                             href="https://mail.google.com/mail/?view=cm&fs=1&to=dipkishor9910@gmail.com"
                             target="_blank"
-                            className="flex items-center gap-4 group"
+                            className="md:flex hidden  items-center gap-4 group"
                         >
                             <div className="w-10 h-10 rounded-full bg-[#161616] flex items-center justify-center border border-white/5 text-orange-500 group-hover:bg-orange-600 group-hover:text-white transition-all">
                                 <Mail size={18} />
@@ -99,7 +99,18 @@ const Footer = () => {
                                 <p className="text-gray-300 text-sm">dipkishor9910@gmail.com</p>
                             </div>
                         </a>
-
+                        <a
+                            href="mailto:dipkishor9910@gmail.com"
+                            className="md:hidden flex  items-center gap-4 group"
+                        >
+                            <div className="w-10 h-10 rounded-full bg-[#161616] flex items-center justify-center border border-white/5 text-orange-500 group-hover:bg-orange-600 group-hover:text-white transition-all">
+                                <Mail size={18} />
+                            </div>
+                            <div>
+                                <p className="text-[10px] text-gray-600 font-bold uppercase tracking-tighter">Email Me</p>
+                                <p className="text-gray-300 text-sm">dipkishor9910@gmail.com</p>
+                            </div>
+                        </a>
                         <a href="tel:9761781000" className="flex items-center gap-4 group">
                             <div className="w-10 h-10 rounded-full bg-[#161616] flex items-center justify-center border border-white/5 text-orange-500 group-hover:bg-orange-600 group-hover:text-white transition-all">
                                 <Phone size={18} />

@@ -53,7 +53,7 @@ const Projects = () => {
     const [selectedProject, setSelectedProject] = useState<Project | null>(null);
     const [currentImgIndex, setCurrentImgIndex] = useState<number>(0);
 
-    const categories = ['All', 'Website'];
+    const categories = ['All', 'Web Application','Ecommerce','Machine Learning'];
 
     const nextImage = useCallback(() => {
         if (!selectedProject) return;

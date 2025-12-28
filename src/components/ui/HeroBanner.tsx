@@ -1,11 +1,11 @@
 'use client'
 import { useMemo } from 'react'
 import { FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa'
-import { ArrowDownRight, Sparkles } from 'lucide-react'
+import { ArrowDownRight, Download, Sparkles } from 'lucide-react'
 import CustomButton from './CustomButton'
 
 const HeroBanner = () => {
-    const startDate = useMemo(() => new Date("2022-03-05"), []);
+    const startDate = useMemo(() => new Date("2022-08-05"), []);
 
     const { years, months } = useMemo(() => {
         const now = new Date();
@@ -51,19 +51,24 @@ const HeroBanner = () => {
 
                     {/* CTA Buttons */}
                     <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 mb-10">
-                        <CustomButton
-                            variant="primary"
-                            className="px-6 py-2 rounded-full bg-orange-600 hover:bg-orange-700 text-white font-bold flex items-center gap-2 shadow-lg shadow-orange-600/20"
+                        {/* <a href="mailto:dipkishor9910@email.com?subject=Project Inquiry">
+                            <CustomButton variant="primary" className="px-6 py-2 rounded-full bg-orange-600 hover:bg-orange-700 text-white font-bold flex items-center gap-2 shadow-lg shadow-orange-600/20">
+                                Hire Me <ArrowDownRight size={16} />
+                            </CustomButton>
+                        </a> */}
+                        <a
+                            href="/PDF/Dip Kishor Regmi CV.pdf"
+                            download="Dip_Kishor_Regmi_CV.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
                         >
-                            Hire Me <ArrowDownRight size={16} />
-                        </CustomButton>
-
-                        <CustomButton
-                            variant="secondary"
-                            className="px-6 py-2 rounded-full border border-white/10 hover:bg-white/5 text-white font-bold"
-                        >
-                            Download CV
-                        </CustomButton>
+                            <CustomButton
+                                variant="secondary"
+                                className="px-6 py-2 rounded-full border border-white/10 hover:bg-white/5 text-white font-bold"
+                            >
+                                <Download size={20} /> Download CV
+                            </CustomButton>
+                        </a>
                     </div>
 
                     {/* Socials & Experience Dashboard */}
@@ -94,12 +99,12 @@ const HeroBanner = () => {
                             </div>
                             <div className="w-[1px] h-10 bg-white/10" />
                             <div>
-                                <h3 className="text-white text-3xl font-black">12<span className="text-orange-500">+</span></h3>
+                                <h3 className="text-white text-3xl font-black">7<span className="text-orange-500">+</span></h3>
                                 <p className="text-gray-500 text-[10px] uppercase font-bold tracking-widest">Projects</p>
                             </div>
                             <div className="w-[1px] h-10 bg-white/10" />
                             <div>
-                                <h3 className="text-white text-3xl font-black">8<span className="text-orange-500">+</span></h3>
+                                <h3 className="text-white text-3xl font-black">5<span className="text-orange-500">+</span></h3>
                                 <p className="text-gray-500 text-[10px] uppercase font-bold tracking-widest">Clients</p>
                             </div>
                         </div>

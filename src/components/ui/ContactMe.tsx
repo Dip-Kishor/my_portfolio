@@ -1,38 +1,113 @@
 'use client'
 import React, { useState } from 'react'
-import { Mail, Phone, MapPin, Send, User, MessageSquare, Globe, Sparkles } from 'lucide-react'
+import { Mail, Phone, MapPin, User, MessageSquare, Globe, Sparkles, Truck, AlertTriangle, ArrowRight } from 'lucide-react'
 import { FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa'
-import CustomButton from '../ui/CustomButton'
+import { motion, AnimatePresence } from 'framer-motion'
+import Toast, { ToastType } from '@/components/helper/Toast'
 
 const Contact = () => {
     const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
+    const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+    const [errors, setErrors] = useState<string[]>([]);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
+    const [toast, setToast] = useState<{ show: boolean, msg: string, type: ToastType }>({
+        show: false, msg: '', type: 'neutral'
+    });
+
+    const showToast = (msg: string, type: ToastType) => {
+        setToast({ show: true, msg, type });
     };
 
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({ ...prev, [name]: value }));
+        // Remove error for this field if user starts typing
+        if (value.trim() !== "") {
+            setErrors(prev => prev.filter(err => err !== name));
+        }
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+
+        // Validation
+        const newErrors: string[] = [];
+        if (!formData.name) newErrors.push('name');
+        if (!formData.email) newErrors.push('email');
+        if (!formData.subject) newErrors.push('subject');
+        if (!formData.message) newErrors.push('message');
+
+        if (newErrors.length > 0) {
+            setErrors(newErrors);
+            showToast("Please fill in all required fields", "error");
+            return;
+        }
+
+        setStatus('loading');
+
+        try {
+            const form = new FormData();
+            Object.entries(formData).forEach(([key, val]) => form.append(key, val));
+            form.append('_captcha', 'false');
+
+            const res = await fetch('https://formsubmit.co/ajax/dipkishor9910@gmail.com', {
+                method: 'POST',
+                headers: { Accept: 'application/json' },
+                body: form
+            });
+
+            const result = await res.json();
+
+            if (result.success === 'true') {
+                setStatus('success');
+                showToast("Thank you for your message. I'll get back to you soon!", "success");
+                setTimeout(() => {
+                    setFormData({ name: '', email: '', subject: '', message: '' });
+                    setStatus('idle');
+                }, 3000);
+            } else {
+                throw new Error();
+            }
+        } catch (error) {
+            setStatus('error');
+            showToast("Failed to sent the message. Please try again.", "error");
+            setTimeout(() => setStatus('idle'), 1000);
+        }
+    };
+
+    // Helper for input borders
+    const getInputClass = (name: string) => `
+        w-full bg-[#0a0a0a] border rounded-xl py-3.5 px-5 outline-none transition-all
+        ${errors.includes(name) ? 'border-red-500 shadow-[0_0_10px_rgba(239,68,68,0.2)]' : 'border-white/5 focus:border-orange-500/50'}
+    `;
+
     return (
-        <section className="relative min-h-screen bg-[#111]  px-4 md:px-20 overflow-hidden">
-            {/* Background Text Watermark */}
-            <h2 className="absolute top-20 left-1/2 -translate-x-1/2 text-[10rem] md:text-[16rem] font-black text-white/[0.02] uppercase select-none pointer-events-none">
+        <section className="relative min-h-screen  px-4 md:px-20 overflow-hidden text-white">
+            {toast.show && (
+                <Toast
+                    message={toast.msg}
+                    type={toast.type}
+                    onClose={() => setToast(prev => ({ ...prev, show: false }))}
+                />
+            )}
+
+            <h2 className="absolute  left-1/2 -translate-x-1/2 text-[10rem] md:text-[16rem] font-black text-white/[0.02] uppercase select-none pointer-events-none">
                 Connect
             </h2>
 
             <div className="relative z-10 max-w-7xl mx-auto">
-                {/* Header */}
                 <div className="text-center mb-20">
                     <p className="text-orange-500 font-black tracking-[0.3em] text-xs mb-3 uppercase flex items-center justify-center gap-2">
                         <Sparkles size={14} /> Get in Touch
                     </p>
-                    <h1 className="text-5xl md:text-7xl font-extrabold text-white tracking-tight">
+                    <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight">
                         Let’s Build Something <br />
                         <span className="text-white/20 italic font-light">Extraordinary.</span>
                     </h1>
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-
-                    {/* 1. LEFT SIDE: Contact Dashboard */}
+                    {/* Left Sidebar Info */}
                     <div className="lg:col-span-5 space-y-6">
                         {/* Info Tiles */}
                         <div className="grid grid-cols-1 gap-4">
@@ -104,65 +179,135 @@ const Contact = () => {
                         </div>
                     </div>
 
-                    {/* 2. RIGHT SIDE: The Contact Form */}
-                    <div className="lg:col-span-7 bg-[#161616] border border-white/5 p-8 md:p-12 rounded-[3rem] shadow-2xl relative">
-                        <form className="space-y-6">
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                {/* Name Input */}
+                    {/* Right Side: Form with Truck Animation */}
+                    <div className="lg:col-span-7 bg-[#111] border border-white/5 p-8 md:p-10 rounded-[2.5rem] shadow-2xl">
+                        <form className="space-y-5" onSubmit={handleSubmit}>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                                 <div className="space-y-2">
-                                    <label className="text-[10px] text-gray-500 font-black uppercase tracking-widest ml-4">Full Name</label>
-                                    <div className="relative group">
-                                        <User className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-600 group-focus-within:text-orange-500 transition-colors" size={18} />
-                                        <input
-                                            type="text" name="name" placeholder="Example"
-                                            className="w-full bg-[#111] border border-white/5 rounded-2xl py-4 pl-14 pr-6 text-white outline-none focus:border-orange-600/50 transition-all placeholder:text-white/10"
-                                        />
-                                    </div>
+                                    <label className="text-[10px] text-gray-500 font-black uppercase tracking-widest ml-2">Full Name</label>
+                                    <input
+                                        type="text" name="name" placeholder="Name"
+                                        value={formData.name} onChange={handleChange}
+                                        className={getInputClass('name')}
+                                    />
                                 </div>
-                                {/* Email Input */}
                                 <div className="space-y-2">
-                                    <label className="text-[10px] text-gray-500 font-black uppercase tracking-widest ml-4">Email Address</label>
-                                    <div className="relative group">
-                                        <Mail className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-600 group-focus-within:text-orange-500 transition-colors" size={18} />
-                                        <input
-                                            type="email" name="email" placeholder="mail@example.com"
-                                            className="w-full bg-[#111] border border-white/5 rounded-2xl py-4 pl-14 pr-6 text-white outline-none focus:border-orange-600/50 transition-all placeholder:text-white/10"
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Subject Input */}
-                            <div className="space-y-2">
-                                <label className="text-[10px] text-gray-500 font-black uppercase tracking-widest ml-4">Subject</label>
-                                <input
-                                    type="text" name="subject" placeholder="Project Inquiry"
-                                    className="w-full bg-[#111] border border-white/5 rounded-2xl py-4 px-6 text-white outline-none focus:border-orange-600/50 transition-all placeholder:text-white/10"
-                                />
-                            </div>
-
-                            {/* Message Input */}
-                            <div className="space-y-2">
-                                <label className="text-[10px] text-gray-500 font-black uppercase tracking-widest ml-4">Your Message</label>
-                                <div className="relative group">
-                                    <MessageSquare className="absolute left-5 top-6 text-gray-600 group-focus-within:text-orange-500 transition-colors" size={18} />
-                                    <textarea
-                                        name="message" rows={5} placeholder="Tell me about your project..."
-                                        className="w-full bg-[#111] border border-white/5 rounded-[2rem] py-5 pl-14 pr-6 text-white outline-none focus:border-orange-600/50 transition-all placeholder:text-white/10 resize-none"
+                                    <label className="text-[10px] text-gray-500 font-black uppercase tracking-widest ml-2">Email</label>
+                                    <input
+                                        type="email" name="email" placeholder="mail@example.com"
+                                        value={formData.email} onChange={handleChange}
+                                        className={getInputClass('email')}
                                     />
                                 </div>
                             </div>
 
-                            {/* Submit Button */}
-                            <CustomButton
-                                variant="primary"
-                                className="w-full py-5 rounded-[2rem] bg-orange-600 hover:bg-orange-700 text-white font-black uppercase tracking-widest flex items-center justify-center gap-3 transition-all hover:scale-[1.02] shadow-xl shadow-orange-600/20"
+                            <div className="space-y-2">
+                                <label className="text-[10px] text-gray-500 font-black uppercase tracking-widest ml-2">Subject</label>
+                                <input
+                                    type="text" name="subject" placeholder="Project Inquiry"
+                                    value={formData.subject} onChange={handleChange}
+                                    className={getInputClass('subject')}
+                                />
+                            </div>
+
+                            <div className="space-y-2">
+                                <label className="text-[10px] text-gray-500 font-black uppercase tracking-widest ml-2">Message</label>
+                                <textarea
+                                    name="message" rows={4} placeholder="Tell me about your project..."
+                                    value={formData.message} onChange={handleChange}
+                                    className={getInputClass('message')}
+                                />
+                            </div>
+
+                            {/* THE MAIL BUTTON */}
+                            <button
+                                type="submit"
+                                disabled={status !== 'idle'}
+                                className={`group relative w-full h-16 bg-white rounded-xl overflow-hidden transition-all duration-500 ${status === 'error' ? 'bg-red-50' : 'hover:bg-gray-50'
+                                    }`}
                             >
-                                Send Message <Send size={18} />
-                            </CustomButton>
+                                {/* Dotted Path */}
+                                {/* <div className="absolute top-1/2 left-4 right-4 h-0 border-t-2 border-dotted border-black/10 -translate-y-1/2" /> */}
+
+                                <div className="relative w-full h-full flex items-center">
+                                    <AnimatePresence mode='wait'>
+                                        {status === 'idle' ? (
+                                            <motion.div
+                                                key="text"
+                                                initial={{ opacity: 0 }}
+                                                animate={{ opacity: 1 }}
+                                                exit={{ opacity: 0 }}
+                                                className="w-full flex items-center justify-center gap-2 text-black font-bold uppercase tracking-widest"
+                                            >
+                                                Send Message <ArrowRight size={18} />
+                                            </motion.div>
+                                        ) : (
+                                            /* This is the container that allows the icon to move across the full width */
+                                            <div className="absolute inset-0 w-full h-full px-8">
+                                                <motion.div
+                                                    key="icon-journey"
+                                                    className="absolute top-1/2 -translate-y-1/2"
+                                                    initial={{ left: "0%" }}
+                                                    animate={
+                                                        status === 'loading'
+                                                            ? { left: "85%" } // Move to near the end while loading
+                                                            : status === 'success'
+                                                                ? { left: "105%", opacity: 0 } // Fly off the right edge
+                                                                : { left: "85%", rotate: [0, -20, 20, -20, 0], x: [0, -5, 5, -5, 0] } // Crash & Shake
+                                                    }
+                                                    transition={
+                                                        status === 'loading'
+                                                            ? { duration: 4.5, ease: "linear" } // 4.5 second journey
+                                                            : status === 'success'
+                                                                ? { duration: 0.5, ease: "easeIn" }
+                                                                : { duration: 0.2, repeat: 5 } // Violent shake on crash
+                                                    }
+                                                >
+                                                    <div className="relative">
+                                                        <Mail
+                                                            className={status === 'error' ? 'text-red-500' : 'text-black'}
+                                                            size={32}
+                                                        />
+
+                                                        {/* Visual "Crash" Spark/Smoke */}
+                                                        {status === 'error' && (
+                                                            <motion.div
+                                                                initial={{ scale: 0, opacity: 0 }}
+                                                                animate={{ scale: 2, opacity: [1, 0] }}
+                                                                className="absolute inset-0 bg-red-500 rounded-full blur-xl"
+                                                            />
+                                                        )}
+                                                    </div>
+                                                </motion.div>
+                                            </div>
+                                        )}
+                                    </AnimatePresence>
+
+                                    {/* Status Messages */}
+                                    <AnimatePresence>
+                                        {status === 'success' && (
+                                            <motion.div
+                                                initial={{ opacity: 0 }}
+                                                animate={{ opacity: 1 }}
+                                                className="w-full flex items-center justify-center text-green-600 font-black uppercase tracking-widest"
+                                            >
+                                                Message Sent
+                                            </motion.div>
+                                        )}
+                                        {status === 'error' && (
+                                            <motion.div
+                                                initial={{ opacity: 0 }}
+                                                animate={{ opacity: 1 }}
+                                                className="w-full flex items-center justify-center text-red-600 font-black uppercase tracking-widest pl-10"
+                                            >
+                                                Connection Lost
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+                                </div>
+                            </button>
                         </form>
                     </div>
-
                 </div>
             </div>
         </section>

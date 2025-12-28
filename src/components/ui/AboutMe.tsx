@@ -3,7 +3,7 @@ import { useMemo } from "react";
 import { Code2, Briefcase, Terminal, Cpu, Rocket, CheckCircle2 } from "lucide-react";
 
 const AboutMe = () => {
-    const startDate = useMemo(() => new Date("2022-03-05"), []);
+    const startDate = useMemo(() => new Date("2022-08-05"), []);
 
     const { years, months } = useMemo(() => {
         const now = new Date();

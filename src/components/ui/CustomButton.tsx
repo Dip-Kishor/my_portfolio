@@ -4,7 +4,7 @@ import { useRipple } from '@/components/helper/RippleEffect';
 
 type Variant = 'primary' | 'secondary' | 'third';
 type TooltipPosition = 'top' | 'bottom' | 'left' | 'right';
-
+type ButtonType = 'button' | 'submit' | 'reset';
 interface CustomButtonProps {
     children: ReactNode;
     variant?: Variant;
@@ -18,6 +18,7 @@ interface CustomButtonProps {
     enableRipple?: boolean;
     rippleColor?: string;
     rippleDuration?: number;
+    type?: ButtonType; 
 }
 
 const variants: Record<Variant, string> = {
@@ -43,6 +44,7 @@ const tooltipArrows: Record<TooltipPosition, string> = {
 const CustomButton: React.FC<CustomButtonProps> = ({
     children,
     variant = 'primary',
+    type = 'button', 
     title,
     tooltipPosition = 'top',
     tooltipDelay = 500,
@@ -109,6 +111,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({
             <div className={`relative ${className}`}>
                 <button
                     onClick={handleClick}
+                    type={type}
                     disabled={disabled || loading}
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}

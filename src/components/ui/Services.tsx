@@ -7,35 +7,35 @@ const servicesData = [
         id: "01",
         title: "Web App Development",
         desc: "Full-stack web apps with reliability and fast functioning built on modern architecture.",
-        img: "/Images/WebDesign.jpg",
+        img: "/Images/Services/WebDesign.jpg",
         tag: "FULL-STACK"
     },
     {
         id: "02",
         title: "Frontend Development",
         desc: "Build responsive and interactive user interfaces using modern frameworks like React & Next.js.",
-        img: "/Images/LaptopMobile.jpg",
+        img: "/Images/Services/LaptopMobile.jpg",
         tag: "UI/UX"
     },
     {
         id: "03",
         title: "Backend Development",
         desc: "Server-side programming, robust database management, and scalable API development.",
-        img: "/Images/Backend.jpg",
+        img: "/Images/Services/Backend.jpg",
         tag: "ARCHITECTURE"
     },
     {
         id: "04",
         title: "E-commerce Solutions",
         desc: "High-conversion online stores with secure payment gateways and product management.",
-        img: "/Images/Ecommerce.png",
+        img: "/Images/Services/Ecommerce.png",
         tag: "COMMERCE"
     },
     {
         id: "05",
         title: "API Integration",
         desc: "Seamlessly connect third-party APIs like payment, maps, or complex analytics tools.",
-        img: "/Images/ApiIntegrations.jpg",
+        img: "/Images/Services/ApiIntegrations.jpg",
         tag: "SYSTEMS"
     }
 ];
@@ -62,8 +62,8 @@ const Services = () => {
             {/* Services Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {servicesData.map((service) => (
-                    <div 
-                        key={service.id} 
+                    <div
+                        key={service.id}
                         className="group relative bg-[#161616] border border-white/5 rounded-[2.5rem] p-8 transition-all duration-500 hover:bg-[#1a1a1a] hover:border-orange-600/30 flex flex-col h-full"
                     >
                         {/* Card Header (Number & Arrow) */}
@@ -78,8 +78,8 @@ const Services = () => {
 
                         {/* Image Container */}
                         <div className="relative w-full h-48 mb-8 overflow-hidden rounded-2xl grayscale group-hover:grayscale-0 transition-all duration-700 shadow-2xl">
-                            <img 
-                                src={service.img} 
+                            <img
+                                src={service.img}
                                 alt={service.title}
                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                             />
@@ -99,7 +99,7 @@ const Services = () => {
                                 {service.desc}
                             </p>
                         </div>
-                        
+
                         {/* Decorative background circle (Subtle) */}
                         <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-orange-600/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
                     </div>

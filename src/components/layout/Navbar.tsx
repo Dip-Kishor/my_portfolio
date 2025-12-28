@@ -28,12 +28,12 @@ const Navbar = () => {
     useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 50);
         window.addEventListener("scroll", handleScroll);
-        
+
         const savedTheme = localStorage.getItem('theme') || 'dark';
         setTheme(savedTheme);
         document.documentElement.classList.toggle('dark', savedTheme === 'dark');
         setMounted(true);
-        
+
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
@@ -56,9 +56,8 @@ const Navbar = () => {
         <>
             {/* MAIN NAV CONTAINER */}
             <header className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 px-4 md:px-10 ${scrolled ? 'py-4' : 'py-8'}`}>
-                <nav className={`mx-auto max-w-7xl transition-all duration-500 rounded-full border border-transparent ${
-                    scrolled ? 'bg-black/60 backdrop-blur-xl border-white/10 px-8 py-3 shadow-2xl' : 'bg-transparent px-4 py-0'
-                }`}>
+                <nav className={`mx-auto max-w-7xl transition-all duration-500 rounded-full border border-transparent ${scrolled ? 'bg-black/60 backdrop-blur-xl border-white/10 px-8 py-3 shadow-2xl' : 'bg-transparent px-4 py-0'
+                    }`}>
                     <div className="flex items-center justify-between">
                         {/* 1. LOGO */}
                         <Link href="/" className="flex items-center gap-2 group">
@@ -72,15 +71,13 @@ const Navbar = () => {
                                 <Link
                                     key={link.href}
                                     href={link.href}
-                                    className={`relative text-[13px] font-bold uppercase tracking-widest transition-colors group ${
-                                        pathname === link.href ? 'text-orange-500' : 'text-gray-400 hover:text-white'
-                                    }`}
+                                    className={`relative text-[13px] font-bold uppercase tracking-widest transition-colors group ${pathname === link.href ? 'text-orange-500' : 'text-gray-400 hover:text-white'
+                                        }`}
                                 >
                                     {link.name}
                                     {/* Hover Indicator (Small Dot) */}
-                                    <span className={`absolute -bottom-2 left-1/2 -translate-x-1/2 w-1 h-1 bg-orange-500 rounded-full transition-all ${
-                                        pathname === link.href ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
-                                    }`} />
+                                    <span className={`absolute -bottom-2 left-1/2 -translate-x-1/2 w-1 h-1 bg-orange-500 rounded-full transition-all ${pathname === link.href ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+                                        }`} />
                                 </Link>
                             ))}
                         </div>
@@ -90,13 +87,15 @@ const Navbar = () => {
                             {/* <div className="hidden md:block">
                                 <ThemeToggle theme={theme} toggleTheme={toggleTheme} mounted={mounted} />
                             </div> */}
-                            
-                            <CustomButton
-                                variant="primary"
-                                className="hidden sm:flex px-2 py-1 rounded-full bg-orange-600 hover:bg-orange-700 text-white text-xs font-bold uppercase tracking-widest items-center gap-2 transition-all hover:scale-105"
-                            >
-                                Let's Talk <ArrowUpRight size={16} />
-                            </CustomButton>
+                            <Link href="/contact">
+
+                                <CustomButton
+                                    variant="primary"
+                                    className="hidden sm:flex px-2 py-1 rounded-full bg-orange-600 hover:bg-orange-700 text-white text-xs font-bold uppercase tracking-widest items-center gap-2 transition-all hover:scale-105"
+                                >
+                                    Let's Talk <ArrowUpRight size={16} />
+                                </CustomButton>
+                            </Link>
 
                             {/* MOBILE HAMBURGER */}
                             <button
@@ -115,11 +114,11 @@ const Navbar = () => {
             {/* MOBILE SIDEBAR (Drawer Style) */}
             <div className={`fixed inset-0 z-[110] transition-all duration-700 ${isOpen ? 'visible' : 'invisible'}`}>
                 {/* Backdrop with Blur */}
-                <div 
+                <div
                     className={`absolute inset-0 bg-black/80 backdrop-blur-md transition-opacity duration-700 ${isOpen ? 'opacity-100' : 'opacity-0'}`}
                     onClick={() => setIsOpen(false)}
                 />
-                
+
                 {/* Menu Content */}
                 <div className={`absolute top-0 right-0 h-full w-full sm:w-[400px] bg-[#111] border-l border-white/5 p-10 flex flex-col transition-transform duration-500 ease-expo ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
                     <div className="flex justify-between items-center mb-20">
@@ -136,9 +135,8 @@ const Navbar = () => {
                                 key={link.href}
                                 href={link.href}
                                 onClick={() => setIsOpen(false)}
-                                className={`text-4xl font-black transition-all hover:pl-4 hover:text-orange-500 ${
-                                    pathname === link.href ? 'text-white' : 'text-white/20'
-                                }`}
+                                className={`text-4xl font-black transition-all hover:pl-4 hover:text-orange-500 ${pathname === link.href ? 'text-white' : 'text-white/20'
+                                    }`}
                                 style={{ transitionDelay: `${i * 50}ms` }}
                             >
                                 {link.name}
@@ -147,13 +145,13 @@ const Navbar = () => {
                     </nav>
 
                     <div className="mt-auto pt-10 border-t border-white/5 flex flex-col gap-6">
-                         {/* <div className="flex justify-between items-center">
+                        {/* <div className="flex justify-between items-center">
                             <p className="text-gray-500 text-sm italic">Mode</p>
                             <ThemeToggle theme={theme} toggleTheme={toggleTheme} mounted={mounted} />
                          </div> */}
-                         <CustomButton className="w-full py-1 rounded-2xl bg-orange-600 text-white font-bold">
+                        <CustomButton className="w-full py-1 rounded-2xl bg-orange-600 text-white font-bold">
                             Hire Me Today
-                         </CustomButton>
+                        </CustomButton>
                     </div>
                 </div>
             </div>

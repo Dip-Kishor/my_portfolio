@@ -8,17 +8,18 @@ export interface Project {
     fullDescription: string;
     role: string;
     tech: string[];
-    origin: 'Office' | 'Self';
+    origin: 'Office' | 'Self' | 'College';
     company: string;
     responsibilities: string[];
     link?: string;
+    status?: string;
 }
 
 export const projectsData: Project[] = [
     {
         id: 1,
         name: 'Ehajiri',
-        category: 'Website',
+        category: 'Web Application',
         slug: 'ehajiri',
         summary: 'A robust HR and payroll solution featuring real-time biometric synchronization via ADMS for seamless workforce management and reporting.',
         fullDescription: "Ehajiri is an advanced Human Resource Information System (HRIS) designed to bridge the gap between physical hardware and digital management. The core strength of the system lies in its direct integration with ZKTeco biometric devices using the ADMS (Automatic Data Master Server) push protocol, allowing real-time attendance logs to sync without requiring a public IP. Beyond simple tracking, it features a complete Payroll Management module that automates salary calculations, tax deductions, and overtime based on live logs. It also incorporates a comprehensive HR suite for leave management, employee life-cycle tracking, and automated reporting, providing a 360-degree view of organizational productivity.",
@@ -32,14 +33,15 @@ export const projectsData: Project[] = [
             "Developed the automated payroll engine with dynamic deduction logic.",
             "Created customizable reporting modules for HR and finance departments."
         ],
-        images: ['/Images/Ehajiri/Image1.png', '/Images/Ehajiri/Image2.png', '/Images/Ehajiri/Image3.png'],
-        link: 'https://ehajiri.com.np'
+        images: ['/Images/Ehajiri/Image1.png', '/Images/Ehajiri/Image2.png', '/Images/Ehajiri/Image3.png', '/Images/Ehajiri/Image4.png', '/Images/Ehajiri/Image5.png', '/Images/Ehajiri/Image6.png', '/Images/Ehajiri/Image7.png', '/Images/Ehajiri/Image8.png'],
+        link: 'https://ehajiri.com.np',
+        status: 'live'
     },
     {
         id: 2,
         name: 'Hotel Management System',
-        category: 'Website',
-        slug: 'hms-office',
+        category: 'Web Application',
+        slug: 'hms',
         summary: 'A comprehensive hospitality platform integrating front-desk operations with POS, table reservations, and automated kitchen order tracking for hotels.',
         fullDescription: "This enterprise-grade Hotel Management System (HMS) was developed to digitize every touchpoint of a guest's journey. It seamlessly integrates Property Management (PMS) with a sophisticated Point of Sale (POS) system designed for in-house restaurants and bars. Key features include an automated KOT (Kitchen Order Ticket) and BOT (Bar Order Ticket) printing system to streamline communication between servers and the kitchen. Notably, the system handles legacy DOS-based bill printing for high-speed thermal printers and manages complex table reservations with real-time floor mapping. From front-desk check-ins and room service to final check-out billing, the platform ensures operational efficiency across all departments.",
         role: "Full Stack Developer",
@@ -53,8 +55,49 @@ export const projectsData: Project[] = [
             "Optimized front-desk workflows including check-in, check-out, and folio management."
         ],
         images: ['/Images/HMS/Image1.png', '/Images/HMS/Image2.png', '/Images/HMS/Image3.png'],
-        link: 'https://demo1.graycode.com.np'
-
+        link: 'https://demo1.graycode.com.np',
+        status: 'live'
+    },
+    {
+        id: 3,
+        name: 'Furni Emporium',
+        category: 'Ecommerce',
+        slug: 'furni-emporium',
+        summary: 'A feature-rich B2C e-commerce platform designed for premium furniture retail, featuring high-quality product visualization and a streamlined checkout experience.',
+        fullDescription: "Furni Emporium is a modern Business-to-Consumer (B2C) marketplace built to handle the complexities of furniture retail. The platform focuses on providing an immersive shopping experience with categorized product catalogs, advanced filtering, and a secure multi-step checkout process. On the backend, it features a robust administrative dashboard for inventory tracking, order fulfillment, and customer management. The system is optimized for high-resolution imagery to showcase furniture details while maintaining fast load times, ensuring a seamless transition from browsing to purchase.",
+        role: "Full Stack Developer",
+        tech: ["MVC", "C#", ".Net", "SQL Server", "Bootstrap", "CSS", "JS"],
+        origin: 'Self',
+        company: 'Personal Project',
+        responsibilities: [
+            "Developed a responsive B2C storefront with a focus performance optimization.",
+            "Built a secure shopping cart and checkout pipeline.",
+            "Designed the administrative inventory system to manage product variants (size, material, color).",
+            "Implemented high-performance image optimization techniques for large product galleries."
+        ],
+        images: ['/Images/Furni/Image1.png', '/Images/Furni/Image2.png', '/Images/Furni/Image3.png', '/Images/Furni/Image4.png', '/Images/Furni/Image5.png'],
+        link: 'https://github.com/Dip-Kishor/EcomInDotnet',
+        status: "codeOnly"
+    },
+    {
+        id: 4,
+        name: 'Wheat Yield Prediction System',
+        category: 'Machine Learning',
+        slug: 'wyps',
+        summary: 'A data-driven agricultural tool leveraging Machine Learning to forecast wheat production based on environmental factors and soil health in all districts of Nepal.',
+        fullDescription: "This project serves as a bridge between agricultural science and data technology. The Wheat Yield Prediction System (WYPS) utilizes historical climate data, soil composition analysis, and irrigation patterns to provide farmers and stakeholders with accurate harvest forecasts. As a core backend developer, I architected the data processing pipeline and contributed to the Machine Learning cycle—including data cleaning, feature engineering, and training the predictive model. The system provides a user-friendly dashboard that visualizes complex ML insights into actionable agricultural advice.",
+        role: "Backend Developer & ML Contributor",
+        tech: ["C#", ".Net Core", "SQL Server", "Python", "Flask"],
+        origin: 'College',
+        company: 'Ambition College',
+        responsibilities: [
+            "Architected the RESTful API to handle large datasets for predictive analysis.",
+            "Contributed to training and fine-tuning ML models to improve prediction accuracy.",
+            "Developed data preprocessing scripts to normalize environmental and soil data.",
+            "Built the visualization dashboard to present predictive analytics in an intuitive format."
+        ],
+        images: ['/Images/WYPS/Image1.jpg', '/Images/WYPS/Image2.png', '/Images/WYPS/Image3.jpg', '/Images/WYPS/Image4.png', '/Images/WYPS/Image5.png', '/Images/WYPS/Image6.jpg', '/Images/WYPS/Image7.png'],
+        link: 'https://wyps-demo.com.np' // Placeholder link
     },
     // {
     //     id: 3,

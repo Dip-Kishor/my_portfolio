@@ -12,7 +12,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
     return (
         <main className="min-h-screen bg-[#111] text-white pt-10 pb-20 px-4 md:px-20">
             {/* Back Button */}
-            <Link href="/" className="inline-flex items-center gap-2 text-gray-400 hover:text-orange-500 transition-colors mb-12 group">
+            <Link href="/projects" className="inline-flex items-center gap-2 text-gray-400 hover:text-orange-500 transition-colors mb-12 group">
                 <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
                 <span>Back to Work</span>
             </Link>

@@ -1,9 +1,9 @@
 'use client'
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import Link from 'next/link';
 import { projectsData } from '@/lib/projects-data'; // Import from new file
 import { X, ChevronLeft, ChevronRight, Maximize2, ArrowRight } from 'lucide-react';
-
+import { motion, AnimatePresence } from 'framer-motion';
 export interface Project {
     id: number;
     name: string;
@@ -52,8 +52,37 @@ const Projects = () => {
     const [activeTab, setActiveTab] = useState<string>('All');
     const [selectedProject, setSelectedProject] = useState<Project | null>(null);
     const [currentImgIndex, setCurrentImgIndex] = useState<number>(0);
-
+    const sectionRef = useRef<HTMLDivElement>(null);
+    const [currentPage, setCurrentPage] = useState(1);
+    const projectsPerPage = 3; // Set how many projects you want per page
+    const filteredProjects = useMemo(() => {
+        return activeTab === 'All' ? projectsData : projectsData.filter(p => p.category === activeTab);
+    }, [activeTab]);
+    
     const categories = ['All', 'Web Application','Ecommerce','Machine Learning'];
+    // 2. Calculate Pagination Logic
+    const totalPages = Math.ceil(filteredProjects.length / projectsPerPage);
+    const indexOfLastProject = currentPage * projectsPerPage;
+    const indexOfFirstProject = indexOfLastProject - projectsPerPage;
+    const currentProjects = filteredProjects.slice(indexOfFirstProject, indexOfLastProject);
+
+    // 3. Reset to page 1 when category changes
+    useEffect(() => {
+        setCurrentPage(1);
+    }, [activeTab]);
+
+    const paginate = (pageNumber: number) => {
+        setCurrentPage(pageNumber);
+        // Optional: Scroll to top of projects section when page changes
+        // window.scrollTo({ top: 200, behavior: 'smooth' });
+        if (sectionRef.current) {
+        sectionRef.current.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'start' // This aligns the top of the section with the top of the screen
+        });
+    }
+    };
+
 
     const nextImage = useCallback(() => {
         if (!selectedProject) return;
@@ -64,6 +93,7 @@ const Projects = () => {
         if (!selectedProject) return;
         setCurrentImgIndex((prev) => (prev - 1 + selectedProject.images.length) % selectedProject.images.length);
     }, [selectedProject]);
+
 
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
@@ -76,10 +106,10 @@ const Projects = () => {
         return () => window.removeEventListener('keydown', handleKeyDown);
     }, [selectedProject, nextImage, prevImage]);
 
-    const filteredProjects = activeTab === 'All' ? projectsData : projectsData.filter(p => p.category === activeTab);
+    // const filteredProjects = activeTab === 'All' ? projectsData : projectsData.filter(p => p.category === activeTab);
 
     return (
-        <div className="mt-15 md:mt-20 px-4 md:px-20 mb-20 relative bg-[#111]">
+        <div ref={sectionRef}  className="mt-15 md:mt-20 px-4 md:px-20 mb-20 relative bg-[#111] scroll-mt-24">
             {/* Header */}
             <div className="relative mb-20">
                 <h2 className="absolute -top-10 left-1/2 -translate-x-1/2 text-[8rem] md:text-[12rem] font-black text-white/[0.02] uppercase select-none whitespace-nowrap pointer-events-none">
@@ -106,7 +136,16 @@ const Projects = () => {
 
             {/* Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                {filteredProjects.map((project, i) => (
+                {currentProjects.map((project, i) => (
+                    <motion.div
+                        key={`${project.id}-${activeTab}`} // Key change triggers animation
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        transition={{ duration: 0.4, delay: i * 0.1 }}
+                        className="group flex flex-col"
+                    >
+
                     <div key={project.id} className="group flex flex-col">
                         {/* Image Container */}
                         <div
@@ -150,8 +189,47 @@ const Projects = () => {
                             </div>
                         </div>
                     </div>
+                </motion.div>
                 ))}
             </div>
+            {totalPages > 1 && (
+                <div className="mt-20 flex justify-center items-center gap-2">
+                    {/* Prev Button */}
+                    <button
+                        disabled={currentPage === 1}
+                        onClick={() => paginate(currentPage - 1)}
+                        className="p-3 rounded-xl bg-[#1a1a1a] border border-white/5 text-gray-400 hover:text-white hover:bg-orange-600 transition-all disabled:opacity-20 disabled:hover:bg-[#1a1a1a] cursor-pointer disabled:cursor-not-allowed"
+                    >
+                        <ChevronLeft size={20} />
+                    </button>
+
+                    {/* Page Numbers */}
+                    <div className="flex gap-2">
+                        {Array.from({ length: totalPages }, (_, i) => i + 1).map((num) => (
+                            <button
+                                key={num}
+                                onClick={() => paginate(num)}
+                                className={`w-12 h-12 rounded-xl font-bold text-sm transition-all border ${
+                                    currentPage === num
+                                        ? 'bg-orange-600 border-orange-600 text-white shadow-[0_0_15px_rgba(234,88,12,0.3)]'
+                                        : 'bg-[#1a1a1a] border-white/5 text-gray-500 hover:text-white hover:border-white/10'
+                                }`}
+                            >
+                                {num}
+                            </button>
+                        ))}
+                    </div>
+
+                    {/* Next Button */}
+                    <button
+                        disabled={currentPage === totalPages}
+                        onClick={() => paginate(currentPage + 1)}
+                        className="p-3 rounded-xl bg-[#1a1a1a] border border-white/5 text-gray-400 hover:text-white hover:bg-orange-600 transition-all disabled:opacity-20 disabled:hover:bg-[#1a1a1a] cursor-pointer disabled:cursor-not-allowed"
+                    >
+                        <ChevronRight size={20} />
+                    </button>
+                </div>
+            )}
 
             {/* LIGHTBOX MODAL */}
             {selectedProject && (

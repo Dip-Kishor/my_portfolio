@@ -2,6 +2,7 @@ import { projectsData } from '@/lib/projects-data';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, ExternalLink, CheckCircle2, Briefcase, User, ListChecks } from 'lucide-react';
 import Link from 'next/link';
+import ImageGallery from '@/components/helper/ImageGallery';
 
 export default async function ProjectDetail({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
@@ -37,13 +38,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
                     </div>
 
                     {/* Image Gallery */}
-                    <div className="mt-16 space-y-8">
-                        {project.images.map((img, idx) => (
-                            <div key={idx} className="rounded-3xl overflow-hidden border border-white/5 shadow-2xl bg-[#161616]">
-                                <img src={img} alt={`${project.name} view ${idx}`} className="w-full h-auto object-cover" />
-                            </div>
-                        ))}
-                    </div>
+                    <ImageGallery images={project.images} projectName={project.name} />
                 </div>
 
                 {/* Right Side: Sidebar Info */}

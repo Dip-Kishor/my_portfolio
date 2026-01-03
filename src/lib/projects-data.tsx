@@ -99,6 +99,38 @@ export const projectsData: Project[] = [
         images: ['/Images/WYPS/Image1.jpg', '/Images/WYPS/Image2.png', '/Images/WYPS/Image3.jpg', '/Images/WYPS/Image4.png', '/Images/WYPS/Image5.png', '/Images/WYPS/Image6.jpg', '/Images/WYPS/Image7.png'],
         link: 'https://wyps-demo.com.np' // Placeholder link
     },
+    {
+        id: 5,
+        name: 'Football League Management System',
+        category: 'Web Application',
+        slug: 'eflms',
+        summary: 'A comprehensive tournament management platform allowing users to form clubs, recruit players, and organize professional-tier football leagues with real-time standings and automated scheduling.',
+        fullDescription: "The Football League Management System (EFLMS) is an all-in-one digital solution designed to streamline the complexities of organizing sports tournaments. The platform empowers users to act as Club Managers, where they can create team identities and recruit members to build their squads. For organizers, the system provides a robust toolkit to create custom leagues, manage registrations, and generate match fixtures. Key features include an automated league table (standings) that updates in real-time based on match results, goal differences, and points. From scheduling matches to tracking individual player statistics and historical results, the platform offers everything required to manage a competitive football ecosystem efficiently.",
+        role: "Full Stack Developer",
+        tech: ["Next.js","Tailwind CSS", "C#", ".Net Core", "PostgreSQL"],
+        origin: 'Self',
+        company: 'Personal Project',
+        responsibilities: [
+            "Designed and implemented the core logic for automated league table calculations and point tracking.",
+            "Developed the club management module including member recruitment and role assignment.",
+            "Created a dynamic match scheduling engine to handle fixture generation and results reporting.",
+            "Built a responsive dashboard for tournament organizers to monitor league progress and player stats."
+        ],
+        images: [
+            '/Images/EFLMS/Image1.png', 
+            '/Images/EFLMS/Image2.png', 
+            '/Images/EFLMS/Image3.png', 
+            '/Images/EFLMS/Image4.png', 
+            '/Images/EFLMS/Image5.png', 
+            '/Images/EFLMS/Image6.png', 
+            '/Images/EFLMS/Image7.png', 
+            '/Images/EFLMS/Image8.png', 
+            '/Images/EFLMS/Image9.png', 
+            '/Images/EFLMS/Image10.png'
+        ],
+        link: '#', // Update with actual link if available
+        status: 'completed'
+    },
     // {
     //     id: 3,
     //     name: 'HMS Lite / Personal Edition',

@@ -49,7 +49,7 @@ const servicesData = [
 
 const Services = () => {
     return (
-        <div className="mt-15 px-4 md:px-20 mb-32 bg-[#111] py-10">
+        <div className="mt-15 px-4 md:px-20 mb-32 bg-(--page-bg) py-10">
             {/* Header Section */}
             <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
                 <div className="max-w-2xl">
@@ -61,7 +61,7 @@ const Services = () => {
                         <span className="text-white/20">For Digital Growth</span>
                     </h3>
                 </div>
-                
+
                 {/* Custom Navigation Buttons */}
                 <div className="flex gap-4 mb-2">
                     <button className="swiper-prev-btn p-3 border border-white/10 rounded-full text-white hover:bg-orange-600 hover:border-orange-600 transition-all cursor-pointer">

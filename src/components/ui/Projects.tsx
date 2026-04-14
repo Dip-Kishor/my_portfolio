@@ -109,7 +109,7 @@ const Projects = () => {
     // const filteredProjects = activeTab === 'All' ? projectsData : projectsData.filter(p => p.category === activeTab);
 
     return (
-        <div ref={sectionRef}  className="mt-15 md:mt-20 px-4 md:px-20 mb-20 relative bg-[#111] scroll-mt-24">
+        <div ref={sectionRef}  className="mt-15 md:mt-20 px-4 md:px-20 mb-20 relative bg-(--page-bg) scroll-mt-24">
             {/* Header */}
             <div className="relative mb-20">
                 <h2 className="absolute -top-10 left-1/2 -translate-x-1/2 text-[8rem] md:text-[12rem] font-black text-white/[0.02] uppercase select-none whitespace-nowrap pointer-events-none">

@@ -5,7 +5,7 @@ import { ArrowDownRight, Download, Sparkles } from 'lucide-react'
 import CustomButton from './CustomButton'
 
 const HeroBanner = () => {
-    const startDate = useMemo(() => new Date("2022-08-05"), []);
+    const startDate = useMemo(() => new Date("2023-10-05"), []);
 
     const { years, months } = useMemo(() => {
         const now = new Date();
@@ -19,7 +19,7 @@ const HeroBanner = () => {
         return { years, months };
     }, [startDate]);
     return (
-        <section className="relative min-h-[90vh] flex items-center bg-[#111] overflow-hidden pt-0 pb-10 px-4 md:px-20">
+        <section className="relative min-h-[90vh] flex items-center bg-(--page-bg) overflow-hidden pt-0 pb-10 px-4 md:px-20">
             {/* Abstract Background Glows */}
             <div className="absolute top-20 left-[-10%] w-[40%] h-[40%] bg-orange-600/10 blur-[120px] rounded-full" />
             <div className="absolute bottom-0 right-0 w-[30%] h-[30%] bg-orange-600/5 blur-[100px] rounded-full" />
@@ -124,9 +124,9 @@ const HeroBanner = () => {
 
                     {/* The Image (Cutout) */}
                     <img
-                        src="/Images/MyImgNew.png"
+                        src="/Images/MyImg.jpeg"
                         alt="Dip Kishor Regmi"
-                        className="w-[28rem] md:w-[45rem] object-cover absolute bottom-0 left-1/2 -translate-x-1/2 drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-transform duration-700 group-hover:scale-105"
+                        className="w-[2rem] md:w-[45rem] object-cover absolute bottom-0 left-1/2 -translate-x-1/2 drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-transform duration-700 group-hover:scale-105"
                     />
 
                     {/* Floating Tech Badge (Optional extra polish) */}

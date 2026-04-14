@@ -3,7 +3,7 @@ import { useMemo } from "react";
 import { Code2, Briefcase, Terminal, Cpu, Rocket, CheckCircle2 } from "lucide-react";
 
 const AboutMe = () => {
-    const startDate = useMemo(() => new Date("2022-08-05"), []);
+    const startDate = useMemo(() => new Date("2023-10-05"), []);
 
     const { years, months } = useMemo(() => {
         const now = new Date();
@@ -20,7 +20,7 @@ const AboutMe = () => {
     const skills = ["C#", "ASP.NET Core", "LINQ", "React.js", "Next.js", "Tailwind CSS", "Bootstrap", "SQL Server", "PostgreSQL", "Entity Framework", "Database Design", "Stored Procedures", "Indexing & Query Optimization", "REST APIs", "JWT", "Third-party API Integration", "Git", "Docker", "Docker Compose", "CI/CD Pipelines", "GitHub Actions", "Clean Architecture", "Agile", "Code Review", "Performance Optimization"];
 
     return (
-        <section className="mt-15 md:mt-0  px-4 md:px-20 bg-[#111] overflow-hidden">
+        <section className="mt-15 md:mt-0  px-4 md:px-20 bg-(--page-bg) overflow-hidden">
             {/* Background Header Text (Watermark effect) */}
             <div className="relative mb-20">
                 <h2 className="absolute -top-10 left-1/2 -translate-x-1/2 text-[8rem] md:text-[12rem] font-black text-white/[0.02] uppercase select-none whitespace-nowrap">
@@ -38,7 +38,7 @@ const AboutMe = () => {
                 <div className="lg:col-span-5 relative group">
                     <div className="relative aspect-[4/5] w-full rounded-[3rem] overflow-hidden border border-white/10 bg-[#161616]">
                         <img
-                            src="/Images/MyImgNew.png"
+                            src="/Images/MyImgNew2.jpg"
                             alt="Dip Kishor Regmi"
                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                         />

@@ -16,7 +16,10 @@
 :root {
   color-scheme: dark;
   --muted-black: #060606;
-  --bg: #121212;
+  /* --bg: #2a2a37; */
+  --bg: #202027;
+  --footer-bg: #16161b;
+  --page-bg: #202027;
   --primary: #1a1a1a;
   --secondary: #1e1e1e;
   --button: #fd6f00;
@@ -30,7 +33,8 @@
 body {
   background-color: var(--bg);
   color: var(--text);
-  transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+  transition:
+    background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
     color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -55,6 +59,7 @@ body {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --color-bg: var(--bg);
+  --page-bg: var(--page-bg);
   --color-button: var(--button);
   --color-dark-orange: var(--dark-orange);
   --color-text: var(--text);
@@ -64,7 +69,8 @@ body {
 }
 
 .theme-transition {
-  transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+  transition:
+    background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
     border-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
     color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }

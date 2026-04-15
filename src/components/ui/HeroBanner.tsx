@@ -38,11 +38,17 @@ const HeroBanner = () => {
                     </div>
 
                     <h4 className="text-gray-500 text-lg font-medium mb-2">Hello, I'm</h4>
-                    <h1 className="text-5xl md:text-7xl font-black text-white leading-tight mb-4">
+                    {/* <h1 className="text-5xl md:text-7xl font-black text-white leading-tight mb-4">
                         Dip Kishor <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-300">Regmi</span>
+                    </h1> */}
+                    <h1 className="text-5xl md:text-7xl font-black leading-tight mb-4 text-white">
+                        <span>Dip Kishor</span>
+                        <br />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-300">
+                            Regmi
+                        </span>
                     </h1>
-
                     <div className="flex items-center justify-center lg:justify-start gap-3 mb-8">
                         <h3 className="text-xl md:text-2xl text-white/60 font-light flex items-center gap-2 italic">
                             <Sparkles className="text-orange-500" size={20} /> Software Developer

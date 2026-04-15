@@ -55,16 +55,23 @@ const Footer = () => {
               {
                 icon: <FaInstagram />,
                 href: "https://instagram.com/dipkishor_regmi",
+                label: "Dip Kishor Regmi on Instagram"
               },
-              { icon: <FaGithub />, href: "https://github.com/Dip-Kishor" },
+              {
+                icon: <FaGithub />,
+                href: "https://github.com/Dip-Kishor",
+                label: "Dip Kishor Regmi on GitHub"
+              },
               {
                 icon: <FaLinkedin />,
                 href: "https://www.linkedin.com/in/dip-kishor-regmi-9b7a6631b",
+                label: "Dip Kishor Regmi on LinkedIn"
               },
             ].map((social, idx) => (
               <a
                 key={idx}
                 href={social.href}
+                aria-label={social.label} 
                 target="_blank"
                 className="w-10 h-10 flex items-center justify-center rounded-xl bg-[#161616] text-gray-500 border border-white/5 hover:border-orange-600 hover:text-white transition-all"
               >
@@ -103,7 +110,8 @@ const Footer = () => {
             <a
               href="https://mail.google.com/mail/?view=cm&fs=1&to=dipkishor9910@gmail.com"
               target="_blank"
-              className="md:flex hidden  items-center gap-4 group"
+              aria-label="Send email to Dip Kishor Regmi via Gmail"
+              className="md:flex hidden items-center gap-4 group"
             >
               <div className="w-10 h-10 rounded-full bg-[#161616] flex items-center justify-center border border-white/5 text-orange-500 group-hover:bg-orange-600 group-hover:text-white transition-all">
                 <Mail size={18} />
@@ -117,7 +125,9 @@ const Footer = () => {
             </a>
             <a
               href="mailto:dipkishor9910@gmail.com"
-              className="md:hidden flex  items-center gap-4 group"
+              aria-label="Send email to Dip Kishor Regmi"
+              aria-hidden="true"
+              className="md:hidden flex items-center gap-4 group"
             >
               <div className="w-10 h-10 rounded-full bg-[#161616] flex items-center justify-center border border-white/5 text-orange-500 group-hover:bg-orange-600 group-hover:text-white transition-all">
                 <Mail size={18} />
@@ -129,7 +139,7 @@ const Footer = () => {
                 <p className="text-gray-300 text-sm">dipkishor9910@gmail.com</p>
               </div>
             </a>
-            <a href="tel:9761781000" className="flex items-center gap-4 group">
+            <a href="tel:9761781000" aria-label="Call Dip Kishor Regmi at +977 9761781000" className="flex items-center gap-4 group">
               <div className="w-10 h-10 rounded-full bg-[#161616] flex items-center justify-center border border-white/5 text-orange-500 group-hover:bg-orange-600 group-hover:text-white transition-all">
                 <Phone size={18} />
               </div>

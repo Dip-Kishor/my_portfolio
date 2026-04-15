@@ -60,7 +60,7 @@ const Navbar = () => {
                     }`}>
                     <div className="flex items-center justify-between">
                         {/* 1. LOGO */}
-                        <Link href="/" className="flex items-center gap-2 group">
+                        <Link href="/" aria-label="Dip Kishor Regmi - Go to Homepage" className="flex items-center gap-2 group">
                             <Logo className="w-10 h-10 transition-transform group-hover:rotate-12" />
                             <span className="text-white font-black tracking-tighter text-xl hidden sm:block">DIP.</span>
                         </Link>

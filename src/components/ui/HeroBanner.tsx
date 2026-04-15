@@ -126,7 +126,7 @@ const HeroBanner = () => {
                     <img
                         src="/Images/MyImg.jpeg"
                         alt="Dip Kishor Regmi"
-                        className="w-[2rem] md:w-[45rem] object-cover absolute bottom-0 left-1/2 -translate-x-1/2 drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-transform duration-700 group-hover:scale-105"
+                        className="w-[20rem] md:w-[45rem] rounded-2xl object-cover absolute bottom-0 left-1/2 -translate-x-1/2 drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-transform duration-700 group-hover:scale-105"
                     />
 
                     {/* Floating Tech Badge (Optional extra polish) */}

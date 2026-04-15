@@ -182,10 +182,9 @@ const Projects = () => {
                                     </p>
                                     <Link
                                         href={`/projects/${project.slug}`}
-                                        aria-label={`Read more about ${project.name}`}
                                         className="inline-flex items-center gap-1 text-orange-500 font-bold text-xs mt-2 hover:text-white transition-colors uppercase tracking-widest"
                                     >
-                                        Read more <ArrowRight size={12} className="mt-0.5" />
+                                        View {project.name} <ArrowRight size={12} className="mt-0.5" />
                                     </Link>
                                 </div>
                             </div>

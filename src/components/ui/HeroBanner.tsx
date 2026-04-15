@@ -42,7 +42,7 @@ const HeroBanner = () => {
                         Dip Kishor <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-300">Regmi</span>
                     </h1> */}
-                    <h1 className="text-5xl md:text-7xl font-black leading-tight mb-4 text-white">
+                    {/* <h1 className="text-5xl md:text-7xl font-black leading-tight mb-4 text-white">
                         <span>Dip Kishor</span>
                         <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-300">
@@ -53,8 +53,24 @@ const HeroBanner = () => {
                         <h3 className="text-xl md:text-2xl text-white/60 font-light flex items-center gap-2 italic">
                             <Sparkles className="text-orange-500" size={20} /> Software Developer
                         </h3>
-                    </div>
+                    </div> */}
+                    <h1 className="text-5xl md:text-7xl font-black leading-tight mb-4 text-white">
+                        <span>Dip Kishor</span>
+                        <br />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-300">
+                            Regmi
+                        </span>
 
+                        {/* SEO hidden reinforcement */}
+                        <span className="sr-only">
+                            Dip Kishor Regmi Software Developer Nepal
+                        </span>
+                    </h1>
+                    <div className="flex items-center justify-center lg:justify-start gap-3 mb-8">
+                        <h3 className="text-xl md:text-2xl text-white/60 font-light flex items-center gap-2 italic">
+                            <Sparkles className="text-orange-500" size={20} /> Software Developer
+                        </h3>
+                    </div>
                     {/* CTA Buttons */}
                     <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 mb-10">
                         {/* <a href="mailto:dipkishor9910@email.com?subject=Project Inquiry">

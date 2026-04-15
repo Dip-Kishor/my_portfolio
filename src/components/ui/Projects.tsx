@@ -182,6 +182,7 @@ const Projects = () => {
                                     </p>
                                     <Link
                                         href={`/projects/${project.slug}`}
+                                        aria-label={`Read more about ${project.name}`}
                                         className="inline-flex items-center gap-1 text-orange-500 font-bold text-xs mt-2 hover:text-white transition-colors uppercase tracking-widest"
                                     >
                                         Read more <ArrowRight size={12} className="mt-0.5" />
@@ -210,8 +211,8 @@ const Projects = () => {
                                 key={num}
                                 onClick={() => paginate(num)}
                                 className={`w-12 h-12 rounded-xl font-bold text-sm transition-all border ${currentPage === num
-                                        ? 'bg-orange-600 border-orange-600 text-white shadow-[0_0_15px_rgba(234,88,12,0.3)]'
-                                        : 'bg-[#1a1a1a] border-white/5 text-gray-500 hover:text-white hover:border-white/10'
+                                    ? 'bg-orange-600 border-orange-600 text-white shadow-[0_0_15px_rgba(234,88,12,0.3)]'
+                                    : 'bg-[#1a1a1a] border-white/5 text-gray-500 hover:text-white hover:border-white/10'
                                     }`}
                             >
                                 {num}

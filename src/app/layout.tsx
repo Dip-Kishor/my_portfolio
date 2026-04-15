@@ -30,6 +30,11 @@ export const metadata: Metadata = {
   },
   description:
     "Full-Stack Software Developer in Kathmandu, Nepal. Specializing in .NET, React, and Next.js web applications.",
+
+  verification: {
+    google: "SblW_qA39Tz0eqgcPK5xw5KUMonDNqp05i8cw9CLqg4",
+  },
+
   keywords: [
     "Dip Kishor Regmi",
     "Software Developer Nepal",

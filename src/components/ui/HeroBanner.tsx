@@ -125,7 +125,7 @@ const HeroBanner = () => {
                     {/* The Image (Cutout) */}
                     <img
                         src="/Images/MyImg.jpeg"
-                        alt="Dip Kishor Regmi"
+                        alt="Dip Kishor Regmi - Full-Stack Software Developer based in Kathmandu, Nepal"
                         className="w-[20rem] md:w-[45rem] rounded-2xl object-cover absolute bottom-0 left-1/2 -translate-x-1/2 drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-transform duration-700 group-hover:scale-105"
                     />
 

@@ -58,8 +58,8 @@ const Projects = () => {
     const filteredProjects = useMemo(() => {
         return activeTab === 'All' ? projectsData : projectsData.filter(p => p.category === activeTab);
     }, [activeTab]);
-    
-    const categories = ['All', 'Web Application','Ecommerce','Machine Learning'];
+
+    const categories = ['All', 'Web Application', 'Ecommerce', 'Machine Learning'];
     // 2. Calculate Pagination Logic
     const totalPages = Math.ceil(filteredProjects.length / projectsPerPage);
     const indexOfLastProject = currentPage * projectsPerPage;
@@ -76,11 +76,11 @@ const Projects = () => {
         // Optional: Scroll to top of projects section when page changes
         // window.scrollTo({ top: 200, behavior: 'smooth' });
         if (sectionRef.current) {
-        sectionRef.current.scrollIntoView({ 
-            behavior: 'smooth', 
-            block: 'start' // This aligns the top of the section with the top of the screen
-        });
-    }
+            sectionRef.current.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start' // This aligns the top of the section with the top of the screen
+            });
+        }
     };
 
 
@@ -109,7 +109,7 @@ const Projects = () => {
     // const filteredProjects = activeTab === 'All' ? projectsData : projectsData.filter(p => p.category === activeTab);
 
     return (
-        <div ref={sectionRef}  className="mt-15 md:mt-20 px-4 md:px-20 mb-20 relative bg-(--page-bg) scroll-mt-24">
+        <div ref={sectionRef} className="mt-15 md:mt-20 px-4 md:px-20 mb-20 relative bg-(--page-bg) scroll-mt-24">
             {/* Header */}
             <div className="relative mb-20">
                 <h2 className="absolute -top-10 left-1/2 -translate-x-1/2 text-[8rem] md:text-[12rem] font-black text-white/[0.02] uppercase select-none whitespace-nowrap pointer-events-none">
@@ -146,50 +146,50 @@ const Projects = () => {
                         className="group flex flex-col"
                     >
 
-                    <div key={project.id} className="group flex flex-col">
-                        {/* Image Container */}
-                        <div
-                            onClick={() => { setSelectedProject(project); setCurrentImgIndex(0); }}
-                            className="relative h-[450px] w-full bg-[#161616] rounded-[2.5rem] overflow-hidden border border-white/5 transition-all duration-500 group-hover:border-orange-600/50 group-hover:bg-[#1a1a1a] cursor-zoom-in"
-                        >
-                            <ProjectCollage images={project.images} index={i} />
-                            <div className="absolute inset-0 z-20 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center backdrop-blur-[3px]">
-                                <div className="bg-white text-black p-5 rounded-full shadow-2xl scale-0 group-hover:scale-100 transition-transform duration-500 hover:bg-orange-600 hover:text-white">
-                                    <Maximize2 size={28} />
+                        <div key={project.id} className="group flex flex-col">
+                            {/* Image Container */}
+                            <div
+                                onClick={() => { setSelectedProject(project); setCurrentImgIndex(0); }}
+                                className="relative h-[450px] w-full bg-[#161616] rounded-[2.5rem] overflow-hidden border border-white/5 transition-all duration-500 group-hover:border-orange-600/50 group-hover:bg-[#1a1a1a] cursor-zoom-in"
+                            >
+                                <ProjectCollage images={project.images} index={i} />
+                                <div className="absolute inset-0 z-20 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center backdrop-blur-[3px]">
+                                    <div className="bg-white text-black p-5 rounded-full shadow-2xl scale-0 group-hover:scale-100 transition-transform duration-500 hover:bg-orange-600 hover:text-white">
+                                        <Maximize2 size={28} />
+                                    </div>
+                                </div>
+                                <div className="absolute bottom-6 right-8 z-30 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                    <span className="bg-[#111]/80 backdrop-blur-md text-white text-[10px] font-bold px-3 py-1 rounded-full border border-white/10">
+                                        {project.images.length} PHOTOS
+                                    </span>
                                 </div>
                             </div>
-                            <div className="absolute bottom-6 right-8 z-30 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                                <span className="bg-[#111]/80 backdrop-blur-md text-white text-[10px] font-bold px-3 py-1 rounded-full border border-white/10">
-                                    {project.images.length} PHOTOS
-                                </span>
-                            </div>
-                        </div>
 
-                        {/* Text Content */}
-                        <div className="mt-8 px-4 flex flex-col">
-                            <div className="flex justify-between items-end mb-4">
-                                <div>
-                                    <p className="text-orange-500 text-[10px] font-black uppercase tracking-[0.2em] mb-1">{project.category}</p>
-                                    <h4 className="text-white text-2xl font-bold group-hover:translate-x-1 transition-transform">{project.name}</h4>
+                            {/* Text Content */}
+                            <div className="mt-8 px-4 flex flex-col">
+                                <div className="flex justify-between items-end mb-4">
+                                    <div>
+                                        <p className="text-orange-500 text-[10px] font-black uppercase tracking-[0.2em] mb-1">{project.category}</p>
+                                        <h4 className="text-white text-2xl font-bold group-hover:translate-x-1 transition-transform">{project.name}</h4>
+                                    </div>
+                                    <span className="text-white/20 text-xs font-mono">0{i + 1}</span>
                                 </div>
-                                <span className="text-white/20 text-xs font-mono">0{i + 1}</span>
-                            </div>
 
-                            {/* Updated Summary with "Read more" after ... */}
-                            <div className="relative">
-                                <p className="text-gray-400 text-sm leading-relaxed line-clamp-2">
-                                    {project.summary}
-                                </p>
-                                <Link
-                                    href={`/projects/${project.slug}`}
-                                    className="inline-flex items-center gap-1 text-orange-500 font-bold text-xs mt-2 hover:text-white transition-colors uppercase tracking-widest"
-                                >
-                                    Read more <ArrowRight size={12} className="mt-0.5" />
-                                </Link>
+                                {/* Updated Summary with "Read more" after ... */}
+                                <div className="relative">
+                                    <p className="text-gray-400 text-sm leading-relaxed line-clamp-2">
+                                        {project.summary}
+                                    </p>
+                                    <Link
+                                        href={`/projects/${project.slug}`}
+                                        className="inline-flex items-center gap-1 text-orange-500 font-bold text-xs mt-2 hover:text-white transition-colors uppercase tracking-widest"
+                                    >
+                                        Read more <ArrowRight size={12} className="mt-0.5" />
+                                    </Link>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </motion.div>
+                    </motion.div>
                 ))}
             </div>
             {totalPages > 1 && (
@@ -209,11 +209,10 @@ const Projects = () => {
                             <button
                                 key={num}
                                 onClick={() => paginate(num)}
-                                className={`w-12 h-12 rounded-xl font-bold text-sm transition-all border ${
-                                    currentPage === num
+                                className={`w-12 h-12 rounded-xl font-bold text-sm transition-all border ${currentPage === num
                                         ? 'bg-orange-600 border-orange-600 text-white shadow-[0_0_15px_rgba(234,88,12,0.3)]'
                                         : 'bg-[#1a1a1a] border-white/5 text-gray-500 hover:text-white hover:border-white/10'
-                                }`}
+                                    }`}
                             >
                                 {num}
                             </button>

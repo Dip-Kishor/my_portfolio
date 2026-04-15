@@ -2,6 +2,7 @@
 import { useMemo } from "react";
 import { Code2, Briefcase, Terminal, Cpu, Rocket, CheckCircle2 } from "lucide-react";
 
+
 const AboutMe = () => {
     const startDate = useMemo(() => new Date("2023-10-05"), []);
 
@@ -39,7 +40,7 @@ const AboutMe = () => {
                     <div className="relative aspect-[4/5] w-full rounded-[3rem] overflow-hidden border border-white/10 bg-[#161616]">
                         <img
                             src="/Images/MyImgNew2.jpg"
-                            alt="Dip Kishor Regmi"
+                            alt="Dip Kishor Regmi - Full-Stack Software Developer based in Kathmandu, Nepal"
                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                         />
                         {/* Overlay Gradient */}

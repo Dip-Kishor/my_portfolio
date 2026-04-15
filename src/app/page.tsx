@@ -1,7 +1,13 @@
 import HeroBanner from "@/components/ui/HeroBanner";
 import Projects from "@/components/ui/Projects";
 import Services from "@/components/ui/Services";
-import Image from "next/image";
+import { Metadata } from "next";
+export const metadata: Metadata = {
+  title: "Home | Dip Kishor Regmi",
+  alternates: {
+    canonical: "https://www.dipkishor.com.np",
+  },
+};
 
 export default function Home() {
   return (

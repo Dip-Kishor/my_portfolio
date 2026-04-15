@@ -14,13 +14,90 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// export const metadata: Metadata = {
+//   title: "Dip Kishor Regmi | Portfolio", // It is good practice to put your name here
+//   description: "Professional Portfolio of Dip Kishor Regmi, Software Developer.",
+//   icons: {
+//     icon: "/icon.svg", // This points to public/icon.svg
+//   },
+// };
 export const metadata: Metadata = {
-  title: "Dip Kishor Regmi | Portfolio", // It is good practice to put your name here
-  description: "Professional Portfolio of Dip Kishor Regmi, Software Developer.",
+  metadataBase: new URL("https://www.dipkishor.com.np"),
+
+  title: {
+    default: "Dip Kishor Regmi | Full-Stack Software Developer",
+    template: "%s | Dip Kishor Regmi",
+  },
+  description:
+    "Full-Stack Software Developer in Kathmandu, Nepal. Specializing in .NET, React, and Next.js web applications.",
+  keywords: [
+    "Dip Kishor Regmi",
+    "Software Developer Nepal",
+    "Full Stack Developer Kathmandu",
+    "React Developer",
+    ".NET Developer Nepal",
+    "Next.js Developer",
+  ],
+  authors: [{ name: "Dip Kishor Regmi", url: "https://www.dipkishor.com.np" }],
+  creator: "Dip Kishor Regmi",
+
+  alternates: {
+    canonical: "https://www.dipkishor.com.np",
+  },
+
+  openGraph: {
+    type: "website",
+    url: "https://www.dipkishor.com.np",
+    title: "Dip Kishor Regmi | Full-Stack Software Developer",
+    description:
+      "Full-Stack Developer in Kathmandu, Nepal. Building modern web apps with .NET & React.",
+    siteName: "Dip Kishor Regmi Portfolio",
+    images: [
+      {
+        url: "/Images/MyImg.jpeg",
+        width: 1200,
+        height: 630,
+        alt: "Dip Kishor Regmi - Full-Stack Software Developer",
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Dip Kishor Regmi | Full-Stack Software Developer",
+    description:
+      "Full-Stack Developer in Kathmandu, Nepal. Specializing in .NET, React & Next.js.",
+    images: ["/Images/MyImg.jpeg"],
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+  },
+
   icons: {
-    icon: "/icon.svg", // This points to public/icon.svg
+    icon: "/icon.svg",
   },
 };
+// Schema Markup (JSON-LD)
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Dip Kishor Regmi",
+  url: "https://www.dipkishor.com.np",
+  jobTitle: "Full-Stack Software Developer",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Kathmandu",
+    addressCountry: "Nepal",
+  },
+  sameAs: [
+    "https://github.com/Dip-Kishor",
+    "https://www.linkedin.com/in/dip-kishor-regmi-9b7a6631b/",
+    "https://instagram.com/dipkishor_regmi",
+  ],
+};
+
 
 export default function RootLayout({
   children,

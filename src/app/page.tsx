@@ -3,7 +3,7 @@ import Projects from "@/components/ui/Projects";
 import Services from "@/components/ui/Services";
 import { Metadata } from "next";
 export const metadata: Metadata = {
-  title: "Home | Dip Kishor Regmi",
+  title: "Dip Kishor Regmi | Software Developer Portfolio",
   alternates: {
     canonical: "https://www.dipkishor.com.np",
   },
